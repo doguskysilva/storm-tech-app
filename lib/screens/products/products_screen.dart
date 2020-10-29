@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobileapp/models/product.dart';
+import 'package:mobileapp/screens/products/products_list.dart';
+import 'package:mobileapp/services/products_services.dart';
 
 class ProductsScreen extends StatefulWidget {
   ProductsScreen({Key key}) : super(key: key);
@@ -14,13 +17,19 @@ class _ProductsScreenState extends State<ProductsScreen> {
       appBar: AppBar(
         title: const Text(''),
       ),
-      body: Center(child: Text('Products')),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            //Navigator.push(
-            //context, MaterialPageRoute(builder: (context) => Details()));
-          },
-          child: Icon(Icons.add)),
+      body: FutureBuilder<List<Product>>(
+        future: fetchResellerProducts(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) print(snapshot.error);
+          return snapshot.hasData
+              ? ProductList(
+                  products: snapshot.data,
+                )
+              : Center(child: CircularProgressIndicator());
+        },
+      ),
+      floatingActionButton:
+          FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
     );
   }
 }
