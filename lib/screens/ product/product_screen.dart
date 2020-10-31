@@ -1,5 +1,12 @@
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:esys_flutter_share/esys_flutter_share.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileapp/models/product.dart';
+import 'package:mobileapp/services/bitly_service.dart';
+import 'package:mobileapp/services/core.dart';
 import 'package:mobileapp/services/products_services.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -41,6 +48,24 @@ class _ProductScreenState extends State<ProductScreen> {
         ));
       });
     }
+  }
+
+  void _shareProduct() async {
+    BitLyRequests()
+        .fetchShortLink(mountShareUrl("products/${widget.product.id}"))
+        .then((value) async {
+      String shareText =
+          "Temos o ${widget.product.name} disponível por apenas R\$ ${widget.product.price}. \n $value";
+      var request =
+          await HttpClient().getUrl(Uri.parse(widget.product.picture));
+      var response = await request.close();
+      Uint8List bytes = await consolidateHttpClientResponseBytes(response);
+      await Share.file(widget.product.name,
+          "product_${widget.product.id.toString()}.jpg", bytes, 'image/jpg',
+          text: shareText);
+    }).catchError((error) {
+      print(error);
+    });
   }
 
   @override
@@ -120,7 +145,7 @@ class _ProductScreenState extends State<ProductScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (widget.product.promptDelivery != null) {
-            print('Vamos compartilhar');
+            _shareProduct();
           } else {
             print('Vamos adicionar');
           }
