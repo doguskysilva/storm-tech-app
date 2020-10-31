@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobileapp/models/product.dart';
+import 'package:mobileapp/services/products_services.dart';
 
 class ProductScreen extends StatefulWidget {
   final Product product;
@@ -11,21 +12,41 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   void _addItemProduct() {
-    setState(() {
-      widget.product.promptDelivery += 1;
+    addItemProduct(widget.product).then((value) {
+      setState(() {
+        widget.product.promptDelivery += 1;
+      });
+
+      _scaffoldKey.currentState.showSnackBar(SnackBar(
+        content: Text("Item adicionado"),
+        duration: Duration(seconds: 2),
+      ));
     });
   }
 
   void _removeItemProduct() {
-    setState(() {
-      if (widget.product != null) widget.product.promptDelivery -= 1;
-    });
+    if (widget.product.promptDelivery != null &&
+        widget.product.promptDelivery > 0) {
+      removeItemProduct(widget.product).then((value) {
+        setState(() {
+          widget.product.promptDelivery -= 1;
+        });
+
+        _scaffoldKey.currentState.showSnackBar(SnackBar(
+          content: Text("Item removido"),
+          duration: Duration(seconds: 2),
+        ));
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text(widget.product.name),
       ),

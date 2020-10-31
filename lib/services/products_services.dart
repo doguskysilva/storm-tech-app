@@ -13,3 +13,16 @@ Future<List<Product>> fetchResellerProducts() async {
 
   return parserProducts(response.body);
 }
+
+Future<bool> addItemProduct(Product product) async {
+  final response = await http.post(baseUrl('reseller-store/add/${product.id}'));
+
+  return response.statusCode == 200 ? true : false;
+}
+
+Future<bool> removeItemProduct(Product product) async {
+  final response =
+      await http.post(baseUrl('reseller-store/remove/${product.id}'));
+
+  return response.statusCode == 200 ? true : false;
+}
