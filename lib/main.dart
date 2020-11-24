@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobileapp/screens/products/products_screen.dart';
+import 'package:mobileapp/screens/stock/stock_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: ''),
     );
   }
 }
@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
-    ProductsScreen(),
+    StockScreen(),
     Text(
       'Index 1: Business',
       style: optionStyle,
@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.store),
-            label: 'Produtos',
+            label: 'Estoque',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),

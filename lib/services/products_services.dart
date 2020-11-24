@@ -9,6 +9,14 @@ List<Product> parserProducts(String responseBody) {
 }
 
 Future<List<Product>> fetchResellerProducts() async {
+  final response = await http.get(mountApiURl('products'));
+
+  return parserProducts(response.body)
+      .where((element) => element.promptDelivery == null)
+      .toList();
+}
+
+Future<List<Product>> fetchResellerStock() async {
   final response = await http.get(mountApiURl('reseller-store'));
 
   return parserProducts(response.body);

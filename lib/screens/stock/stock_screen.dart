@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:mobileapp/models/product.dart';
+import 'package:mobileapp/screens/products/products_screen.dart';
 import 'package:mobileapp/screens/shared/products_list.dart';
 import 'package:mobileapp/services/products_services.dart';
 
-class ProductsScreen extends StatefulWidget {
-  ProductsScreen({Key key}) : super(key: key);
+class StockScreen extends StatefulWidget {
+  StockScreen({Key key}) : super(key: key);
 
   @override
-  _ProductsScreenState createState() => _ProductsScreenState();
+  _StockScreenState createState() => _StockScreenState();
 }
 
-class _ProductsScreenState extends State<ProductsScreen> {
+class _StockScreenState extends State<StockScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Catálogo'),
+        title: const Text('X'),
       ),
       body: FutureBuilder<List<Product>>(
-        future: fetchResellerProducts(),
+        future: fetchResellerStock(),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
           return snapshot.hasData
@@ -28,6 +29,12 @@ class _ProductsScreenState extends State<ProductsScreen> {
               : Center(child: CircularProgressIndicator());
         },
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ProductsScreen()));
+          },
+          child: Icon(Icons.add)),
     );
   }
 }

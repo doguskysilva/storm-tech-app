@@ -24,7 +24,9 @@ class _ProductListItemState extends State<ProductListItem> {
                   widget.product.picture,
                 )),
             title: Text(widget.product.name),
-            subtitle: Text('${widget.product.promptDelivery} items em estoque'),
+            subtitle: widget.product.promptDelivery == null
+                ? Text('')
+                : Text('${widget.product.promptDelivery} items em estoque'),
             onTap: () {
               Navigator.push(
                   context,
