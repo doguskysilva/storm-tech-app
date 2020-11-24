@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobileapp/screens/orders/orders_screen.dart';
 import 'package:mobileapp/screens/stock/stock_screen.dart';
 
 void main() {
@@ -38,10 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'Index 1: Business',
       style: optionStyle,
     ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    OrdersScreen(),
     Text(
       'Index 2: School',
       style: optionStyle,
