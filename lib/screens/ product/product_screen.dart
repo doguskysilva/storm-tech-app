@@ -69,9 +69,13 @@ class _ProductScreenState extends State<ProductScreen> {
   }
 
   void _addProductToStock() {
-    setState(() {
-      widget.product.promptDelivery = 1;
-    });
+    addProductToStock(widget.product)
+        .then((value) => {
+              setState(() {
+                widget.product.promptDelivery = 1;
+              })
+            })
+        .catchError((onError) => {print(onError.toString())});
   }
 
   @override

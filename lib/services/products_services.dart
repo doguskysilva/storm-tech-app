@@ -22,6 +22,16 @@ Future<List<Product>> fetchResellerStock() async {
   return parserProducts(response.body);
 }
 
+Future<bool> addProductToStock(Product product) async {
+  Map bodyRequest = {"product_id": product.id, "amount": 1};
+
+  final response = await http.post(mountApiURl('reseller-store'),
+      headers: {"Content-Type": "application/json"},
+      body: json.encode(bodyRequest));
+
+  return response.statusCode == 200 ? true : false;
+}
+
 Future<bool> addItemProduct(Product product) async {
   final response =
       await http.post(mountApiURl('reseller-store/add/${product.id}'));
