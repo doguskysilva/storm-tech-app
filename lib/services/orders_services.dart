@@ -4,14 +4,16 @@ import 'package:mobileapp/models/order.dart';
 import 'package:mobileapp/services/core.dart';
 
 List<Order> parserOrders(String responseBody) {
-  final parsed = json.decode(responseBody)['data'].cast<Map<String, dynamic>>();
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
   return parsed.map<Order>((json) => Order.fromJson(json)).toList();
 }
 
 Future<List<Order>> fetchOrders() async {
   final response = await http.get(mountApiURl('orders'));
 
-  return parserOrders(response.body);
+  return parserOrders(response.body)
+      .where((element) => element.cliente != null)
+      .toList();
 }
 
 Future<Order> fetchOrder(Order order) async {

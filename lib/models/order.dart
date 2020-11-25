@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:mobileapp/models/client.dart';
 
 class Order {
@@ -5,7 +7,7 @@ class Order {
   String code;
   int status;
   String statusDescription;
-  String amount;
+  double amount;
   Cliente cliente;
   String createdAt;
   String updatedAt;
@@ -25,7 +27,7 @@ class Order {
     code = json['code'];
     status = json['status'];
     statusDescription = json['status_description'];
-    amount = json['amount'];
+    amount = json['amount'].toDouble();
     cliente =
         json['cliente'] != null ? new Cliente.fromJson(json['cliente']) : null;
     createdAt = json['created_at'];
