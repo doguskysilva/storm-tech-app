@@ -1,22 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:mobileapp/screens/orders/orders_screen.dart';
+import 'package:mobileapp/screens/profile/profile_screen.dart';
 import 'package:mobileapp/screens/stock/stock_screen.dart';
+import 'package:mobileapp/size_config.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: ''),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return OrientationBuilder(
+          builder: (context, orientation) {
+            SizeConfig().init(constraints, orientation);
+            return MaterialApp(
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                primarySwatch: Colors.orange,
+                visualDensity: VisualDensity.adaptivePlatformDensity,
+              ),
+              home: MyHomePage(title: ''),
+              debugShowCheckedModeBanner: false,
+            );
+          },
+        );
+      },
     );
   }
 }
@@ -34,16 +45,13 @@ class _MyHomePageState extends State<MyHomePage> {
   static TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
+    ProfileScreen(),
     StockScreen(),
     Text(
       'Index 1: Business',
       style: optionStyle,
     ),
     OrdersScreen(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
   ];
 
   void _onItemTapped(int index) {
@@ -62,6 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
+              icon: Icon(Icons.person), label: 'Meu Espaço'),
+          BottomNavigationBarItem(
             icon: Icon(Icons.store),
             label: 'Estoque',
           ),
@@ -72,8 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Pedidos',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile')
+          )
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
