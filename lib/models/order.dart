@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:mobileapp/models/client.dart';
 
 class Order {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobileapp/models/order.dart';
+import 'package:mobileapp/screens/order/order_screen.dart';
 
 class OrdersListItem extends StatelessWidget {
   final Order order;
@@ -9,6 +10,15 @@ class OrdersListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+        child: GestureDetector(
+      onTap: () => {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => OrderScreen(
+                      order: order,
+                    )))
+      },
       child: Card(
         child: Column(
           children: [
@@ -33,6 +43,6 @@ class OrdersListItem extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
