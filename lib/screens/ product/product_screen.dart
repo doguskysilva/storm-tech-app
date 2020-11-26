@@ -84,6 +84,7 @@ class _ProductScreenState extends State<ProductScreen> {
         key: _scaffoldKey,
         appBar: AppBar(
           title: Text(widget.product.name),
+          backgroundColor: Colors.orange,
         ),
         body: Container(
           child: SingleChildScrollView(
@@ -153,6 +154,8 @@ class _ProductScreenState extends State<ProductScreen> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.orange[700],
+          foregroundColor: Colors.white,
           onPressed: () {
             if (widget.product.promptDelivery != null) {
               _shareProduct();

@@ -1,8 +1,37 @@
+import 'dart:typed_data';
+
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:mobileapp/services/bitly_service.dart';
 import 'package:mobileapp/size_config.dart';
+
+const TEXT_TO_SHARE =
+    "Oie, eu sou a Nat! Vim te apresentar minha amiga Aline, ela também é uma consultora Natura e já está com todos os nossos produtos incríveis e que ainda ajudam o meio ambiente, pra dar uma olhada é só acessar por aqui ó";
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key key}) : super(key: key);
+
+  _shareSpace() {
+    BitLyRequests()
+        .fetchShortLink(
+            "https://storm-tech.herokuapp.com/products?reseller=XFTH3478")
+        .then((value) async {
+      String shareText = "$TEXT_TO_SHARE $value";
+
+      ByteData bytes = await rootBundle.load('assets/nati_share.jpeg');
+
+      await Share.file('Aline Pilot', 'nati_share.jpeg',
+          bytes.buffer.asUint8List(), 'image/jpeg',
+          text: shareText);
+
+      print(shareText);
+    }).catchError((error) {
+      print(error);
+    });
+
+    print('Here');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -180,13 +209,14 @@ class ProfileScreen extends StatelessWidget {
                           padding: EdgeInsets.only(
                               top: 2 * SizeConfig.heightMultiplier),
                           child: RaisedButton(
-                            color: Colors.orange[600],
+                            color: Colors.orange[700],
                             textColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            onPressed: () {},
-                            child: Text("Compartilhar Meu Espaço"),
+                            onPressed: _shareSpace,
+                            child:
+                                Text("Compartilhar Meu Espaço".toUpperCase()),
                           )),
                       SizedBox(
                         height: 3 * SizeConfig.heightMultiplier,

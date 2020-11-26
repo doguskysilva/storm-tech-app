@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:mobileapp/screens/orders/orders_screen.dart';
 import 'package:mobileapp/screens/profile/profile_screen.dart';
 import 'package:mobileapp/screens/stock/stock_screen.dart';
@@ -19,9 +21,13 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               title: 'Flutter Demo',
               theme: ThemeData(
-                primarySwatch: Colors.orange,
-                visualDensity: VisualDensity.adaptivePlatformDensity,
-              ),
+                  primarySwatch: Colors.orange,
+                  primaryColor: Colors.orange[700],
+                  accentColor: Colors.orange[700],
+                  visualDensity: VisualDensity.adaptivePlatformDensity,
+                  iconTheme: IconThemeData(color: Colors.white),
+                  primaryTextTheme:
+                      TextTheme(headline6: TextStyle(color: Colors.white))),
               home: MyHomePage(title: ''),
               debugShowCheckedModeBanner: false,
             );
@@ -66,26 +72,48 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: 'Meu Espaço'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.store),
-            label: 'Estoque',
+      bottomNavigationBar: Container(
+        height: 10 * SizeConfig.heightMultiplier,
+        decoration: BoxDecoration(color: Colors.white, boxShadow: [
+          BoxShadow(blurRadius: 20, color: Colors.black.withOpacity(.1))
+        ]),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 8),
+            child: GNav(
+                gap: 6,
+                activeColor: Colors.white,
+                color: Colors.brown[900],
+                iconSize: 24,
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                duration: Duration(milliseconds: 400),
+                tabBackgroundColor: Colors.orange[800],
+                tabs: [
+                  GButton(
+                    icon: LineIcons.user,
+                    text: 'Meu Espaço',
+                  ),
+                  GButton(
+                    icon: LineIcons.shopping_cart,
+                    text: 'Estoque',
+                  ),
+                  GButton(
+                    icon: LineIcons.bar_chart_o,
+                    text: 'Marketing',
+                  ),
+                  GButton(
+                    icon: LineIcons.shopping_cart,
+                    text: 'Pedidos',
+                  ),
+                ],
+                selectedIndex: _selectedIndex,
+                onTabChange: (index) {
+                  setState(() {
+                    _selectedIndex = index;
+                  });
+                }),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Marketing',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Pedidos',
-          )
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        ),
       ),
     );
   }

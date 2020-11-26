@@ -16,7 +16,8 @@ class _StockScreenState extends State<StockScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('X'),
+        title: const Text(''),
+        backgroundColor: Colors.orange[700],
       ),
       body: FutureBuilder<List<Product>>(
         future: fetchResellerStock(),
@@ -30,6 +31,8 @@ class _StockScreenState extends State<StockScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.orange[700],
+          foregroundColor: Colors.white,
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ProductsScreen()));
