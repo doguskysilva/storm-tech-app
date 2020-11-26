@@ -55,6 +55,10 @@ flutter:
     - assets/insta.png
     - assets/profileimg.jpg
     - assets/nati_share.jpeg
+    - assets/marketing/marketing1_feed.png
+    - assets/marketing/marketing2_feed.png
+    - assets/marketing/marketing1_stories.png
+    - assets/marketing/marketing2_stories.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

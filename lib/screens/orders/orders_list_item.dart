@@ -28,7 +28,7 @@ class OrdersListItem extends StatelessWidget {
               subtitle: Text(order.statusDescription),
               leading: Icon(
                 Icons.shopping_basket,
-                color: Colors.blue[500],
+                color: Colors.orange[800],
               ),
             ),
             Divider(),
@@ -37,7 +37,7 @@ class OrdersListItem extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.w500)),
               leading: Icon(
                 Icons.monetization_on,
-                color: Colors.blue[500],
+                color: Colors.orange[800],
               ),
             ),
           ],

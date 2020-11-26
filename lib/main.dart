@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:mobileapp/screens/marketing/marketing_screen.dart';
 import 'package:mobileapp/screens/orders/orders_screen.dart';
 import 'package:mobileapp/screens/profile/profile_screen.dart';
 import 'package:mobileapp/screens/stock/stock_screen.dart';
@@ -53,18 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
   static List<Widget> _widgetOptions = <Widget>[
     ProfileScreen(),
     StockScreen(),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
+    MarketingScreen(),
     OrdersScreen(),
   ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

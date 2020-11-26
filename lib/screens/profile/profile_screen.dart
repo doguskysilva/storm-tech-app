@@ -29,8 +29,6 @@ class ProfileScreen extends StatelessWidget {
     }).catchError((error) {
       print(error);
     });
-
-    print('Here');
   }
 
   @override

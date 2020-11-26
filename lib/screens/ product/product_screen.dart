@@ -103,25 +103,27 @@ class _ProductScreenState extends State<ProductScreen> {
                           style: TextStyle(
                               fontSize: 28, fontWeight: FontWeight.bold),
                         ),
-                        RichText(
-                          text: TextSpan(
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20),
-                            children: [
-                              WidgetSpan(
-                                child: Icon(
-                                  Icons.shopping_basket,
-                                  color: Colors.black26,
+                        widget.product.promptDelivery != null
+                            ? RichText(
+                                text: TextSpan(
+                                  style: TextStyle(
+                                      color: Colors.black87,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                  children: [
+                                    WidgetSpan(
+                                      child: Icon(
+                                        Icons.shopping_basket,
+                                        color: Colors.black26,
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: ' ${widget.product.promptDelivery}',
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              TextSpan(
-                                text: ' ${widget.product.promptDelivery}',
-                              ),
-                            ],
-                          ),
-                        )
+                              )
+                            : Text('')
                       ],
                     )),
                 Padding(
@@ -144,11 +146,13 @@ class _ProductScreenState extends State<ProductScreen> {
                 IconButton(
                   onPressed: _addItemProduct,
                   icon: Icon(Icons.add_circle_outline),
+                  color: Colors.brown[900],
                 ),
               if (widget.product.promptDelivery != null)
                 IconButton(
                   onPressed: _removeItemProduct,
                   icon: Icon(Icons.remove_circle_outline),
+                  color: Colors.brown[900],
                 )
             ],
           ),
