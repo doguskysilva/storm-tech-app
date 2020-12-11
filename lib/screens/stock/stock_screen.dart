@@ -4,6 +4,8 @@ import 'package:mobileapp/screens/products/products_screen.dart';
 import 'package:mobileapp/screens/shared/products_list.dart';
 import 'package:mobileapp/services/products_services.dart';
 
+import '../../services/products_services.dart';
+
 class StockScreen extends StatefulWidget {
   StockScreen({Key key}) : super(key: key);
 
@@ -12,6 +14,27 @@ class StockScreen extends StatefulWidget {
 }
 
 class _StockScreenState extends State<StockScreen> {
+  List<Product> _products = [];
+
+  void _loadStock() async {
+    var result = await fetchResellerStock();
+    setState(() {
+      _products = result;
+    });
+  }
+
+  Future<void> _getData() async {
+    setState(() {
+      _loadStock();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadStock();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,17 +42,13 @@ class _StockScreenState extends State<StockScreen> {
         title: const Text(''),
         backgroundColor: Colors.orange[700],
       ),
-      body: FutureBuilder<List<Product>>(
-        future: fetchResellerStock(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) print(snapshot.error);
-          return snapshot.hasData
-              ? ProductList(
-                  products: snapshot.data,
-                )
-              : Center(child: CircularProgressIndicator());
-        },
-      ),
+      body: _products.length == 0
+          ? Center(child: CircularProgressIndicator())
+          : RefreshIndicator(
+              child: ProductList(
+                products: _products,
+              ),
+              onRefresh: _getData),
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.orange[700],
           foregroundColor: Colors.white,
