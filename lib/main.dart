@@ -6,9 +6,14 @@ import 'package:mobileapp/screens/orders/orders_screen.dart';
 import 'package:mobileapp/screens/profile/profile_screen.dart';
 import 'package:mobileapp/screens/stock/stock_screen.dart';
 import 'package:mobileapp/size_config.dart';
+import 'package:mobileapp/store/stock_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+    child: MyApp(),
+    create: (context) => StockModel(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
