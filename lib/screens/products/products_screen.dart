@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobileapp/models/product.dart';
-import 'package:mobileapp/screens/shared/products_list.dart';
-import 'package:mobileapp/services/products_services.dart';
+import 'package:stnatura/models/product.dart';
+import 'package:stnatura/screens/shared/products_list.dart';
+import 'package:stnatura/services/products_services.dart';
 
 class ProductsScreen extends StatefulWidget {
   ProductsScreen({Key key}) : super(key: key);

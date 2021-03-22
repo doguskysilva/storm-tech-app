@@ -1,4 +1,4 @@
-import 'package:mobileapp/models/marketing.dart';
+import 'package:stnatura/models/marketing.dart';
 
 List<Marketing> fetchMarketings() {
   final marketings = new List<Marketing>();

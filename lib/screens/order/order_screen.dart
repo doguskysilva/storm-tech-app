@@ -4,8 +4,8 @@ import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mobileapp/models/order.dart';
-import 'package:mobileapp/services/bitly_service.dart';
+import 'package:stnatura/models/order.dart';
+import 'package:stnatura/services/bitly_service.dart';
 
 class OrderScreen extends StatefulWidget {
   final Order order;

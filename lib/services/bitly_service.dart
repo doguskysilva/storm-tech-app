@@ -15,12 +15,13 @@ class BitLyRequests {
       "long_url": url
     };
 
-    final response = await http.post('https://api-ssl.bitly.com/v4/shorten',
-        headers: {
-          HttpHeaders.authorizationHeader: "Bearer $_token",
-          HttpHeaders.contentTypeHeader: 'application/json'
-        },
-        body: json.encode(data));
+    final response =
+        await http.post(Uri.https('https://api-ssl.bitly.com', 'v4/shorten'),
+            headers: {
+              HttpHeaders.authorizationHeader: "Bearer $_token",
+              HttpHeaders.contentTypeHeader: 'application/json'
+            },
+            body: json.encode(data));
     final responseJson = jsonDecode(response.body);
 
     return responseJson['link'];

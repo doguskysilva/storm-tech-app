@@ -3,8 +3,8 @@ import 'dart:typed_data';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mobileapp/models/marketing.dart';
-import 'package:mobileapp/services/marketing_service.dart';
+import 'package:stnatura/models/marketing.dart';
+import 'package:stnatura/services/marketing_service.dart';
 
 class MarketingScreen extends StatefulWidget {
   MarketingScreen({Key key}) : super(key: key);

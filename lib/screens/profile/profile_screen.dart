@@ -3,8 +3,8 @@ import 'dart:typed_data';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mobileapp/services/bitly_service.dart';
-import 'package:mobileapp/size_config.dart';
+import 'package:stnatura/services/bitly_service.dart';
+import 'package:stnatura/size_config.dart';
 
 const TEXT_TO_SHARE =
     "Oie, eu sou a Nat! Vim te apresentar minha amiga Aline, ela também é uma consultora Natura e já está com todos os nossos produtos incríveis e que ainda ajudam o meio ambiente, pra dar uma olhada é só acessar por aqui ó";

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobileapp/models/product.dart';
-import 'package:mobileapp/screens/%20product/product_screen.dart';
+import 'package:stnatura/models/product.dart';
+import 'package:stnatura/screens/%20product/product_screen.dart';
 
 class ProductListItem extends StatefulWidget {
   final Product product;

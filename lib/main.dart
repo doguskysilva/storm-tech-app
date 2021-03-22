@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:mobileapp/screens/marketing/marketing_screen.dart';
-import 'package:mobileapp/screens/orders/orders_screen.dart';
-import 'package:mobileapp/screens/profile/profile_screen.dart';
-import 'package:mobileapp/screens/stock/stock_screen.dart';
-import 'package:mobileapp/size_config.dart';
+import 'package:stnatura/screens/marketing/marketing_screen.dart';
+import 'package:stnatura/screens/orders/orders_screen.dart';
+import 'package:stnatura/screens/profile/profile_screen.dart';
+import 'package:stnatura/screens/stock/stock_screen.dart';
+import 'package:stnatura/size_config.dart';
 
 void main() {
   runApp(MyApp());
@@ -86,15 +86,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     text: 'Meu Espaço',
                   ),
                   GButton(
-                    icon: LineIcons.shopping_cart,
+                    icon: LineIcons.shoppingCart,
                     text: 'Estoque',
                   ),
                   GButton(
-                    icon: LineIcons.bar_chart_o,
+                    icon: LineIcons.barChart,
                     text: 'Marketing',
                   ),
                   GButton(
-                    icon: LineIcons.shopping_cart,
+                    icon: LineIcons.shoppingCart,
                     text: 'Pedidos',
                   ),
                 ],

@@ -4,10 +4,10 @@ import 'dart:typed_data';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileapp/models/product.dart';
-import 'package:mobileapp/services/bitly_service.dart';
-import 'package:mobileapp/services/core.dart';
-import 'package:mobileapp/services/products_services.dart';
+import 'package:stnatura/models/product.dart';
+import 'package:stnatura/services/bitly_service.dart';
+import 'package:stnatura/services/core.dart';
+import 'package:stnatura/services/products_services.dart';
 
 class ProductScreen extends StatefulWidget {
   final Product product;
@@ -52,7 +52,8 @@ class _ProductScreenState extends State<ProductScreen> {
 
   void _shareProduct() async {
     BitLyRequests()
-        .fetchShortLink(mountShareUrl("products/${widget.product.id}"))
+        .fetchShortLink(
+            mountShareUrl("products/${widget.product.id}").toString())
         .then((value) async {
       String shareText =
           "Temos o ${widget.product.name} disponível por apenas R\$ ${widget.product.price}. \n $value";

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:mobileapp/models/order.dart';
-import 'package:mobileapp/services/core.dart';
+import 'package:stnatura/models/order.dart';
+import 'package:stnatura/services/core.dart';
 
 List<Order> parserOrders(String responseBody) {
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();

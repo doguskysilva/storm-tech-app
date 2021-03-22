@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobileapp/models/order.dart';
-import 'package:mobileapp/screens/orders/orders_list.dart';
-import 'package:mobileapp/services/orders_services.dart';
+import 'package:stnatura/models/order.dart';
+import 'package:stnatura/screens/orders/orders_list.dart';
+import 'package:stnatura/services/orders_services.dart';
 
 class OrdersScreen extends StatefulWidget {
   OrdersScreen({Key key}) : super(key: key);

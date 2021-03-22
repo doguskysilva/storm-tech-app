@@ -1,4 +1,4 @@
-import 'package:mobileapp/models/client.dart';
+import 'package:stnatura/models/client.dart';
 
 class Order {
   int id;

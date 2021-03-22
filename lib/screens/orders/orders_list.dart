@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobileapp/models/order.dart';
-import 'package:mobileapp/screens/orders/orders_list_item.dart';
+import 'package:stnatura/models/order.dart';
+import 'package:stnatura/screens/orders/orders_list_item.dart';
 
 class OrdersList extends StatelessWidget {
   final List<Order> orders;

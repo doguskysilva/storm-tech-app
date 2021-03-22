@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:mobileapp/models/product.dart';
-import 'package:mobileapp/services/core.dart';
+import 'package:stnatura/models/product.dart';
+import 'package:stnatura/services/core.dart';
 
 List<Product> parserProducts(String responseBody) {
   final parsed = json.decode(responseBody)['data'].cast<Map<String, dynamic>>();
